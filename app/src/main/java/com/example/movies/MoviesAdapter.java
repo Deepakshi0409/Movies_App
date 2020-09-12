@@ -2,7 +2,8 @@ package com.example.movies;
 
 import android.content.Context;
 
-import android.util.Log;
+
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,14 +13,17 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.picasso.Picasso;
+
+import com.bumptech.glide.Glide;
+
 
 import java.util.ArrayList;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHolder> {
      private ArrayList<Movies> movie;
-
-    public MoviesAdapter() {
+     private Context context;
+    public MoviesAdapter( Context context) {
+        this.context = context;
         movie = new ArrayList<>();
     }
 
@@ -30,7 +34,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
     @NonNull
     @Override
     public MoviesAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        Context context = parent.getContext();
+        context = parent.getContext();
         LayoutInflater inflater = LayoutInflater.from(context);
         View articleView = inflater.inflate(R.layout.movies_list_item, parent, false);
         return new MyViewHolder(articleView);
@@ -40,7 +44,9 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHold
     public void onBindViewHolder(@NonNull MoviesAdapter.MyViewHolder holder, int position) {
         Movies movies = movie.get(position);
         holder.title.setText(movies.title);
-        Picasso.get().load(movies.image).into(holder.image);
+
+        Glide.with(context).load(movies.getImageUrl()).into(holder.image);
+
 
     }
 

@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adaptor = new MoviesAdapter();
+        adaptor = new MoviesAdapter(this);
         recyclerView.setAdapter(adaptor);
         movies = new ArrayList<>();
         getData();
@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                         JSONObject jsonObject = response.getJSONObject(i);
 
                         Movies movie = new Movies();
-                        movie.setImage(jsonObject.getString("image"));
+                        movie.setImageUrl(jsonObject.getString("image"));
                         movie.setTitle(jsonObject.getString("title"));
                         movies.add(movie);
 

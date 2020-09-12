@@ -12,7 +12,10 @@
         android:layout_height="wrap_content"
         android:paddingBottom="10dp"
         android:text="@string/textname"
-        android:textSize="30sp" />
+        android:textColor="#C0C0C0"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        android:background="#000000"/>
 
     <ImageView
         android:id="@+id/image"

@@ -2,7 +2,7 @@ package com.example.movies;
 
 public class Movies {
     String title;
-    String image;
+    String imageUrl;
 
     public Movies() {
     }
@@ -15,11 +15,11 @@ public class Movies {
         this.title = title;
     }
 
-    public String getImage() {
-        return image;
+    public String getImageUrl() {
+        return imageUrl;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }
