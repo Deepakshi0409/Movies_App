@@ -18,35 +18,29 @@ import com.bumptech.glide.Glide;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesAdapter.MyViewHolder> {
-     private ArrayList<Movies> movie;
+     private List<Movies> movie;
      private Context context;
-    public MoviesAdapter( Context context) {
+    public MoviesAdapter(Context context, List<Movies> movies) {
         this.context = context;
-        movie = new ArrayList<>();
+       this.movie = movies;
     }
 
-    public void setData(ArrayList<Movies> movie) {
-        this.movie = movie;
-    }
 
     @NonNull
     @Override
-    public MoviesAdapter.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        context = parent.getContext();
-        LayoutInflater inflater = LayoutInflater.from(context);
-        View articleView = inflater.inflate(R.layout.movies_list_item, parent, false);
-        return new MyViewHolder(articleView);
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater inflater = LayoutInflater.from(parent.getContext());
+        View v = inflater.inflate(R.layout.movies_list_item, parent, false);
+        return new MyViewHolder(v);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MoviesAdapter.MyViewHolder holder, int position) {
-        Movies movies = movie.get(position);
-        holder.title.setText(movies.title);
-
-        Glide.with(context).load(movies.getImageUrl()).into(holder.image);
-
+        holder.title.setText(movie.get(position).getTitle());
+        Glide.with(context).load(movie.get(position).getImageUrl()).into(holder.image);
 
     }
 

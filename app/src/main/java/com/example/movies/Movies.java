@@ -7,6 +7,11 @@ public class Movies {
     public Movies() {
     }
 
+    public Movies(String title, String imageUrl){
+        this.title = title;
+        this.imageUrl = imageUrl;
+    }
+
     public String getTitle() {
         return title;
     }
